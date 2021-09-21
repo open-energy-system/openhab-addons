@@ -13,9 +13,18 @@
 		<description>Open Energy System - Module for controlling a pump</description>
 
 		<channels>
-			<channel id="channel1" typeId="sample-channel"/>
+			<channel id="0x1000" typeId="pump-speed"/>
+			<channel id="0x1000" typeId="temperature-sensor">
+TODO: weiter hier
+			</channel>
+			<channel id="0x1000" typeId="pump-speed"/>
 		</channels>
 
+		<properties>
+			<property name="vendor">0x0001</property>
+			<property name="modelId">0x0001</property>
+		</properties>
+<!--
 		<config-description>
 			<parameter name="hostname" type="text" required="true">
 				<context>network-address</context>
@@ -32,12 +41,11 @@
 				<description>Interval the device is polled in sec.</description>
 			</parameter>
 		</config-description>
+-->
 	</thing-type>
 
-	<!-- Sample Channel Type -->
-	<channel-type id="sample-channel">
-		<item-type>Number:Temperature</item-type>
-		<label>Example Temperature</label><!-- Use uppercase words, except prepositions. 2-3 words, max 25 chars -->
-		<description>Sample channel for CANtspro Binding</description>
+	<channel-type id="pump-speed">
+		<state min="0" max="100" step="1" pattern="%d" readOnly="false" />
+		<label>Pump Speed</label><!-- Use uppercase words, except prepositions. 2-3 words, max 25 chars -->
 	</channel-type>
 </thing:thing-descriptions>
